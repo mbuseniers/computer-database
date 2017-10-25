@@ -1,21 +1,37 @@
-package Controllers;
+package Utils;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Entities.Company;
 
-public class SaisiesController {
+public class Utils {
 
+	
+	public static Timestamp convertStringToTimestamp(String str_date) {
+	    try {
+	      DateFormat formatter;
+	      formatter = new SimpleDateFormat("dd/MM/yyyy");
+	      Date date = formatter.parse(str_date);
+	      Timestamp timeStampDate = new Timestamp(date.getTime());
+
+	      return timeStampDate;
+	    } catch (ParseException e) {
+	      System.out.println("Mauvaise saisie de la date");
+	      return null;
+	    }
+	 }
+	
 	public static int saisieEntier() {
 
 		try {
 			Scanner sc = new Scanner(System.in);
-
 			int choix = sc.nextInt();
-
-			// sc.close();
-
 			return choix;
 		} catch (InputMismatchException ime) {
 			System.out.println("Valeur saisie non numérique\n" + "ou hors des limites int.");
@@ -57,5 +73,4 @@ public class SaisiesController {
 
 		return choix;
 	}
-
 }
