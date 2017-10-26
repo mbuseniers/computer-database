@@ -17,7 +17,7 @@ public class Utils {
 	    try {
 	      DateFormat formatter;
 	      formatter = new SimpleDateFormat("dd/MM/yyyy");
-	      Date date = formatter.parse(str_date);
+	      Date date = (Date) formatter.parse(str_date);
 	      Timestamp timeStampDate = new Timestamp(date.getTime());
 
 	      return timeStampDate;
@@ -27,7 +27,8 @@ public class Utils {
 	    }
 	 }
 	
-	public static int saisieEntier() {
+	
+	public static int scanInt() {
 
 		try {
 			Scanner sc = new Scanner(System.in);
@@ -39,7 +40,7 @@ public class Utils {
 		}
 	}
 
-	public static int choixCompany() {
+	public static int chooseCompany() {
 
 		Company[] companies = Company.values();
 		boolean valide = false;

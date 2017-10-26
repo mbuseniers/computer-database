@@ -1,7 +1,7 @@
 package Entities;
 
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.sql.Date;
 
 public class Computer {
 
@@ -9,6 +9,8 @@ public class Computer {
 	private String name;
 	private Timestamp date_introduced;
 	private Timestamp date_discontinued;
+	
+
 	private int id_company;
 	
 	
@@ -25,6 +27,7 @@ public class Computer {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public Timestamp getDate_introduced() {
 		return date_introduced;
 	}
@@ -37,6 +40,8 @@ public class Computer {
 	public void setDate_discontinued(Timestamp date_discontinued) {
 		this.date_discontinued = date_discontinued;
 	}
+		
+	
 	public int getId_company() {
 		return id_company;
 	}
@@ -44,11 +49,11 @@ public class Computer {
 		this.id_company = id_company;
 	}
 	
-	public Computer(String name, Timestamp date_introduced, Timestamp date_discontinued, int id_company) {
+	public Computer(String name, Timestamp ts_inc, Timestamp ts_des, int id_company) {
 		super();
 		this.name = name;
-		this.date_introduced = date_introduced;
-		this.date_discontinued = date_discontinued;
+		this.date_introduced = ts_inc;
+		this.date_discontinued = ts_des;
 		this.id_company = id_company;
 	}
 

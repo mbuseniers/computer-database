@@ -26,18 +26,13 @@ public class DAOComputer {
 	}
 	
 	
-	
 	public void addComputer(Computer computer) 
-	{
-		
-		
+	{	
 		    try {
-		    	
 
 		    	String StrDateInc;
 		    	String StrDateDec;
-
-		    	
+	
 		    	if(computer.getDate_introduced() != null) StrDateInc = "'" + computer.getDate_introduced( )+ "'";
 		    	else StrDateInc = null;
 		    	
@@ -88,6 +83,8 @@ public class DAOComputer {
 		    }
 		    
 		    Page.doComputerPagination(rs);
+		    
+		    
 		    rs.close();
 		    stmt.close();
 		    
@@ -102,7 +99,6 @@ public class DAOComputer {
 			
 			String StrDateInc;
 	    	String StrDateDec;
-
 	    	
 	    	if(computer.getDate_introduced() != null) StrDateInc = "'" + computer.getDate_introduced( )+ "'";
 	    	else StrDateInc = null;

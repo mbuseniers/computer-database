@@ -1,9 +1,6 @@
 package interfaceProjet;
 
 import java.sql.SQLException;
-import java.util.Scanner;
-
-import DataAccess.DAOComputer;
 import Utils.Utils;
 import services.CompanyService;
 import services.ComputerService;
@@ -11,7 +8,6 @@ import services.ComputerService;
 public class Main {
 
 	public static void main(String[] args) throws SQLException {
-		// TODO Auto-generated method stub
 
 		System.out.println("Bienvenue sur le projet Computer Database");
 		boolean continuer = true;
@@ -29,7 +25,7 @@ public class Main {
 			System.out.println("5 - Afficher les Company");
 			System.out.println("6 - Quitter");
 			
-			int choix= Utils.saisieEntier();
+			int choix= Utils.scanInt();
 			
 			
 			switch(choix) {

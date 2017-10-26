@@ -26,8 +26,7 @@ public class Page {
 				}
 							
 				sc.nextLine();
-
-				
+	
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

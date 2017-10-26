@@ -3,8 +3,6 @@ package DataAccess;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-
 import com.mysql.jdbc.Statement;
 
 import Jdbc.ConnectionMySQL;
