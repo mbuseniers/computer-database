@@ -1,4 +1,4 @@
-package Utils;
+package utils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -72,9 +72,15 @@ public class Page {
 		finally {
 			//sc.close();
 		}
-		
 
-		
 
 	}
+	
+	
+	
+	public static void doBetterComputerPagination()
+	{
+		
+	}
+
 }

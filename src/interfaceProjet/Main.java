@@ -1,9 +1,11 @@
 package interfaceProjet;
 
 import java.sql.SQLException;
-import Utils.Utils;
+
+import model.Computer;
 import services.CompanyService;
 import services.ComputerService;
+import utils.Utils;
 
 public class Main {
 
@@ -11,8 +13,8 @@ public class Main {
 
 		System.out.println("Bienvenue sur le projet Computer Database");
 		boolean continuer = true;
-		ComputerService ComputerCtrl = new ComputerService();
-		CompanyService CompanyCtrl = new CompanyService(); 
+		int result=0;
+		ComputerService CptService;
 
 		
 		while(continuer)
@@ -31,23 +33,58 @@ public class Main {
 			switch(choix) {
 			
 			case 1 : 
-				ComputerCtrl.getComputers();
+				CptService = ComputerService.getInstance();
+				
+				System.out.println("Liste des Computers : ");
+				
+				CptService.getComputers().stream().forEach(System.out::println);
+				
 				break;
 				
 			case 2 : 
-				ComputerCtrl.addComputer();
+				
+				CptService = ComputerService.getInstance();
+				result = CptService.addComputer();
+				
+				if(result == 1 ) {
+					System.out.println("Ajout Ok");
+				} else {
+					System.out.println("Ajout non effectué");
+				}
+				
 				break;
 				
 			case 3 : 
-				ComputerCtrl.updateComputer();
+				
+				CptService = ComputerService.getInstance();
+				result = CptService.updateComputer();
+				
+				if(result == 1 ){
+					System.out.println("Update Ok");
+				} else {
+					System.out.println("Update non effectué");
+				}
+				
 				break;
 				
 			case 4 : 
-				ComputerCtrl.deleteComputer();
+				
+				CptService = ComputerService.getInstance();
+				result = CptService.deleteComputer();
+				if(result == 1 ) {
+					System.out.println("Delete Ok");
+				} else {
+					System.out.println("Delete non effectué");
+				}
+				
 				break;
 				
 			case 5 :
-				CompanyCtrl.getCompanies();
+				CompanyService cs = CompanyService.getInstance();
+				
+				System.out.println("Liste des Company : ");
+
+				cs.getCompanies().stream().forEach(System.out::println);;
 				break;
 				
 			case 6 : 

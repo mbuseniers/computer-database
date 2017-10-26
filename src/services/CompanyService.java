@@ -1,22 +1,33 @@
 package services;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-import DataAccess.DAOCompany;
-import DataAccess.DAOComputer;
+import dao.DAOCompany;
+import mappers.CompanyMapper;
+import model.Company;
 
 public class CompanyService {
 
+	private static CompanyService cs;
 	DAOCompany da;
 	
-	public CompanyService()
+	private CompanyService()
 	{
 		da = DAOCompany.getInstance();
 	}
 	
-	public void getCompanies() throws SQLException
+	public static CompanyService getInstance() {
+		if (cs == null)
+		{ 	cs = new CompanyService();	
+		}
+		return cs;
+	} 
+	
+	
+	public ArrayList<Company> getCompanies()
 	{
-		da.getCompanies();
+		return da.getCompanies();
 	}
 	
 }

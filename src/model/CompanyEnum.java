@@ -1,6 +1,6 @@
-package Entities;
+package model;
 
-public enum Company {
+public enum CompanyEnum {
 	APPLE,
 	THINKING_MACHINES,
 	RCA,

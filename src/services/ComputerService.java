@@ -1,26 +1,33 @@
 package services;
 
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-import DataAccess.DAOComputer;
-import Entities.Company;
-import Entities.Computer;
-import Utils.Utils;
+import dao.DAOComputer;
+import model.Computer;
+import utils.Utils;
 
 public class ComputerService {
 
+	private static ComputerService cs;
 	DAOComputer da;
 	
-	public ComputerService()
+	private ComputerService()
 	{
 		da = DAOComputer.getInstance();
 	}
+	
+	public static ComputerService getInstance() {
+		if (cs == null)
+		{ 	cs = new ComputerService();	
+		}
+		return cs;
+	} 
 
 	
-	public void addComputer()
+	public int addComputer()
 	{
 		String nom;
 		int id_company;
@@ -31,29 +38,49 @@ public class ComputerService {
 		nom = sc.nextLine();
 		
 		/* Saisie dates */
-		System.out.println("Saisir la date de mise en marche (format dd/MM/yyyy)");
-		String StrDate_inc = sc.nextLine();
-		Timestamp ts_inc = Utils.convertStringToTimestamp(StrDate_inc);
+		System.out.println("Saisie de la date de mise en marche ");
+		//String StrDate_inc = sc.nextLine();
 		
-		System.out.println("Saisir la date de fin de marche (format dd/MM/yyyy)");
-		String StrDate_dis = sc.nextLine();
-		Timestamp ts_des = Utils.convertStringToTimestamp(StrDate_dis);
+		System.out.println("Saisir le jour : ");
+		int dayOfMonth = sc.nextInt();
+		
+		System.out.println("Saisir le mois : ");
+		int month = sc.nextInt();
+		
+		System.out.println("Saisir l'année : ");
+		int year = sc.nextInt();
+		
+		LocalDate ts_inc = LocalDate.of(year, month, dayOfMonth);
+		
+		System.out.println("Saisie de la date de fin de marche ");
+		//String StrDate_inc = sc.nextLine();
+		
+		System.out.println("Saisir le jour : ");
+		dayOfMonth = sc.nextInt();
+		
+		System.out.println("Saisir le mois : ");
+		month = sc.nextInt();
+		
+		System.out.println("Saisir l'année : ");
+		year = sc.nextInt();
+		
+		LocalDate ts_des = LocalDate.of(year, month, dayOfMonth);
 		
 		/* Saisie company */
 		id_company = Utils.chooseCompany();
 
 		
-		da.addComputer(new Computer(nom,ts_inc,ts_des,id_company));
+		return da.addComputer(new Computer(nom,ts_inc,ts_des,id_company));
 		
 	}
 	
-	public void getComputers() throws SQLException
+	public ArrayList<Computer> getComputers() throws SQLException
 	{
 
-		da.getComputers();
+		return da.getComputers();
 	}
 	
-	public void updateComputer()
+	public int updateComputer()
 	{
 		System.out.println("Saisir l'ID du Computer à modifier");
 		int id=Utils.scanInt();
@@ -64,29 +91,47 @@ public class ComputerService {
 		
 		/* Saisie dates */
 		
-		System.out.println("Saisir la date de mise en marche (format dd/MM/yyyy)");
-		String StrDate_inc = sc.nextLine();
+		/* Saisie dates */
+		System.out.println("Saisie de la date de mise en marche ");
+		//String StrDate_inc = sc.nextLine();
 		
-		Timestamp ts_inc = Utils.convertStringToTimestamp(StrDate_inc);
+		System.out.println("Saisir le jour : ");
+		int dayOfMonth = sc.nextInt();
 		
+		System.out.println("Saisir le mois : ");
+		int month = sc.nextInt();
 		
-		System.out.println("Saisir la date de fin de marche (format dd/MM/yyyy)");
-		String StrDate_dis = sc.nextLine();
+		System.out.println("Saisir l'année : ");
+		int year = sc.nextInt();
 		
-		Timestamp ts_des = Utils.convertStringToTimestamp(StrDate_dis);
+		LocalDate ts_inc = LocalDate.of(year, month, dayOfMonth);
+		
+		System.out.println("Saisie de la date de fin de marche ");
+		//String StrDate_inc = sc.nextLine();
+		
+		System.out.println("Saisir le jour : ");
+		dayOfMonth = sc.nextInt();
+		
+		System.out.println("Saisir le mois : ");
+		month = sc.nextInt();
+		
+		System.out.println("Saisir l'année : ");
+		year = sc.nextInt();
+		
+		LocalDate ts_des = LocalDate.of(year, month, dayOfMonth);
 		
 		int id_company = Utils.chooseCompany();
 
-		da.updateComputer(id, new Computer(nom,ts_inc,ts_des,id_company));
+		return da.updateComputer(id, new Computer(nom,ts_inc,ts_des,id_company));
 		
 	}
 	
-	public void deleteComputer()
+	public int deleteComputer()
 	{
 		System.out.println("Saisir l'ID du Computer à supprimer");
 		int id=Utils.scanInt();
 		
-		da.deleteComputer(id);
+		return da.deleteComputer(id);
 
 
 	}
